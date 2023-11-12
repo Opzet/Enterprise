@@ -2,15 +2,26 @@
 Using CRUD design Pattern (c) 2023 to make enterprise LOB apps
 
 ## Tech Stack
-Winform 4.8 
-EF  
-Visual Entity Framework 
-- Visual Table Layout, storage model, and the mappings between them.
-SqlServer/LocalDb
-WebAPi
-Message Hub
+
+### Winform DotNet 4.8 
+
+### Entity Framework EF Visual Designer 
+
+You can read more about how to use the designer in the [Documentation site](https://msawczyn.github.io/EFDesigner/).
+<table><tbody><tr><td>
+<img src="https://msawczyn.github.io/EFDesigner/images/Designer.jpg">
+</td></tr></tbody></table>
+
+This Visual Studio 2022 extension is the easiest way to add a consistently correct Entity Framework (EF6 or EFCore) model to your project.
+Robust implementation of https://learn.microsoft.com/en-us/visualstudio/data-tools/entity-data-model-tools-in-visual-studio
+
+#### SqlServer/LocalDb
 
 
-## Database 
-Visual Studio Entity Framework
-https://learn.microsoft.com/en-us/visualstudio/data-tools/entity-data-model-tools-in-visual-studio?view=vs-2022
+### WebAPi
+ DbContext code is written to allow consumption via webapi
+### Enterprise Message Hub 
+#### Realtime Multiuser app messaging
+DbContext CRUD creates pub/sub message bus (signalr) events
+
+
