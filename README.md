@@ -1,6 +1,9 @@
 # Enterprise
 Using CRUD design Pattern (c) 2023 to make enterprise LOB apps
 
+## Pattern
+![CRUD LOB Pattern](https://github.com/Opzet/Enterprise/blob/main/CRUD%20Pattern/CRUD%20LOB%20Pattern.png?raw=true)
+
 ## Tech Stack
 
 ### Winform DotNet 4.8 
