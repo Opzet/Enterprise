@@ -41,7 +41,16 @@ namespace MultiUserRealtimeApp
 
         private async void BtnWriteData_Click(object sender, EventArgs e)
         {
-            string message = $"{LblUsername.Text} {DateTime.Now:HH:mm:ss}";
+            string message = $"{LblUsername.Text} {DateTime.Now:HH:mm:ss} : {txtMessage.Text}";
+
+
+
+
+            // should be e,g    WEBAPI.Write(message);
+
+            // This is what I am trying to avoid.. front end loaded code 
+            //MOVE INTO WebApi layer so can do TDD without Ui
+
 
             // Ensure _httpClient is initialized
             if (_httpClient == null)
@@ -141,8 +150,9 @@ namespace MultiUserRealtimeApp
             {
                 sum += c;
             }
-            string name = names[sum % 100];
-           
+            // Use the length of the names array to avoid hardcoding the size
+            string name = names[sum % names.Length];
+
             return name;
         }
     }

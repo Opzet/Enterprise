@@ -36,7 +36,7 @@ namespace Db
       /// <summary>
       /// Default connection string
       /// </summary>
-      public static string ConnectionString { get; set; } = @"Server=(localdb)\MSSQLLocalDB;Database=WebApiDb;Trusted_Connection=True;MultipleActiveResultSets=true";
+      public static string ConnectionString { get; set; } = @"Server=(localdb)\\MSSQLLocalDB;Database=WebApiDb;Trusted_Connection=True;MultipleActiveResultSets=true";
       /// <inheritdoc />
       public WebApiDb() : base(ConnectionString)
       {

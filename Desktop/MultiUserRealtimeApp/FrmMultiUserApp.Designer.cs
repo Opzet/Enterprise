@@ -36,6 +36,8 @@
             this.LblUsername = new System.Windows.Forms.Label();
             this.BtnGetData = new System.Windows.Forms.Button();
             this.LblServerMessage = new System.Windows.Forms.Label();
+            this.txtMessage = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // BtnWriteData
@@ -52,7 +54,7 @@
             // 
             this.LblTime.BackColor = System.Drawing.Color.White;
             this.LblTime.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.LblTime.Location = new System.Drawing.Point(549, 221);
+            this.LblTime.Location = new System.Drawing.Point(531, 137);
             this.LblTime.Name = "LblTime";
             this.LblTime.Size = new System.Drawing.Size(124, 43);
             this.LblTime.TabIndex = 1;
@@ -78,7 +80,7 @@
             // 
             this.LblUsername.BackColor = System.Drawing.Color.White;
             this.LblUsername.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.LblUsername.Location = new System.Drawing.Point(401, 221);
+            this.LblUsername.Location = new System.Drawing.Point(383, 137);
             this.LblUsername.Name = "LblUsername";
             this.LblUsername.Size = new System.Drawing.Size(130, 43);
             this.LblUsername.TabIndex = 3;
@@ -99,18 +101,36 @@
             // 
             this.LblServerMessage.BackColor = System.Drawing.Color.White;
             this.LblServerMessage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.LblServerMessage.Location = new System.Drawing.Point(431, 80);
+            this.LblServerMessage.Location = new System.Drawing.Point(439, 19);
             this.LblServerMessage.Name = "LblServerMessage";
             this.LblServerMessage.Size = new System.Drawing.Size(216, 43);
             this.LblServerMessage.TabIndex = 5;
             this.LblServerMessage.Text = "...";
             this.LblServerMessage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // txtMessage
+            // 
+            this.txtMessage.Location = new System.Drawing.Point(389, 208);
+            this.txtMessage.Name = "txtMessage";
+            this.txtMessage.Size = new System.Drawing.Size(292, 31);
+            this.txtMessage.TabIndex = 6;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.textBox2.Location = new System.Drawing.Point(849, 0);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(331, 450);
+            this.textBox2.TabIndex = 7;
+            // 
             // FrmMultiUserApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1180, 450);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtMessage);
             this.Controls.Add(this.LblServerMessage);
             this.Controls.Add(this.BtnGetData);
             this.Controls.Add(this.LblUsername);
@@ -134,6 +154,8 @@
         private System.Windows.Forms.Label LblUsername;
         private System.Windows.Forms.Button BtnGetData;
         private System.Windows.Forms.Label LblServerMessage;
+        private System.Windows.Forms.TextBox txtMessage;
+        private System.Windows.Forms.TextBox textBox2;
     }
 }
 

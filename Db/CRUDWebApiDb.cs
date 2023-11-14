@@ -23,7 +23,7 @@ namespace Db
             sqllocaldb stop mssqllocaldb
             sqllocaldb delete mssqllocaldb
             sqllocaldb start "MSSQLLocalDB"
-            
+            or sqllocaldb create MSSQLLocalDB -s
             */
             using (var db = new WebApiDb())
             {
