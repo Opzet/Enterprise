@@ -1,18 +1,23 @@
 # Enterprise
-The CRUD design pattern shifts this paradigm towards a more testable and reusable service with features like `INotifyPropertyChanged` & `PropertyChanged` for multiuser concurrency and UI remote-control through data binding.
 
-Project aims to modernize and streamline the development of enterprise Line of Business (LOB) applications using C# Winform by utilizing the CRUD design pattern, to overcome poor practice of front end loaded / code behind issue when coding rather than programming agaisnt a pattern that allows for testing and scaling applications.
+The Enterprise project leverages the CRUD design pattern to transform traditional C# WinForms development. By prioritizing testability and reusability, this approach addresses the common pitfalls of frontend-loaded coding practices. The goal is to facilitate a programming paradigm that supports robust testing and scalable application growth.
+
+Our focus is on modernizing enterprise Line of Business (LOB) applications by employing sound architectural patterns that enable a clear separation between user interfaces and business logic.
 
 **Key Benefits:**
-- **Separation of Concerns**: The 'CRUD' database layer decouples the UI from the business logic.
-- **Simplified UI Logic**: Utilizes tuples for setting and getting UI properties, facilitating intuitive mapping between UI and database fields.
-- **Business Logic Centralization**: By moving to the CRUD layer, we achieve a cleaner and more maintainable codebase.
-- **Unit Testing**: Integration of unit tests enhances the robustness of your WinForms application.
-- **Cloud Readiness**: A well-architected solution simplifies the adoption of Azure services and allows for code sharing with mobile counterparts.
 
-## Pattern Overview
+- **Separation of Concerns**: Introducing a 'CRUD' database layer to uncouple UI elements from core business processes.
+- **Intuitive UI Logic**: The use of tuples for property assignments simplifies the synchronization between UI components and database fields.
+- **Centralized Business Logic**: Migrating logic to the CRUD layer fosters a more maintainable and organized code structure.
+- **Enhanced Testing**: Incorporating unit testing to ensure application stability and integrity.
+- **Cloud Compatibility**: Architectural soundness eases the transition to Azure, facilitating mobile application development and codebase sharing.
 
-The CRUD LOB pattern is designed to enhance the maintainability and scalability of enterprise applications.
+## CRUD Pattern Overview
+
+At the heart of the project is the CRUD LOB pattern, crafted to bolster the maintainability and scalability of enterprise software. 
+
+This strategy is not just about code refinement and boilerplate; it's an approach aimed at using old Winform RAD with Entityframework ORM for  Line of Business applications into the future with solid foundations and clear, scalable structure.
+Avoiding Databinding, dependancy injection and allowing for step through debugging.
 
 ![CRUD LOB Pattern](https://github.com/Opzet/Enterprise/blob/main/CRUD%20Pattern/CRUD%20LOB%20Pattern.png?raw=true)
 
