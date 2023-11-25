@@ -12,6 +12,61 @@ These Enterprise project examples leverage a Layered Seperation Design Pattern f
 
 ### Seperation Layers [EFDb <-> Poco <-> Tuples <-> Ui ]
 
+
+```mermaid
+
+graph TD
+    UI_View[UI View] -->|View via Tuples to POCO| CRUD_Operation[CRUD Operation]
+    CRUD_Operation -->|POCO to EF Db Table| Db_Table[Database Table]
+
+    subgraph View to Db Flow
+        UI_View --> CRUD_CreateUpdate[CRUD.Product_CreateUpdate]
+        CRUD_CreateUpdate --> Db_Table
+    end
+
+    subgraph Db to View Flow
+        Db_Table --> CRUD_DbToProduct[CRUD.DbtoProduct]
+        CRUD_DbToProduct --> View_Product[View.ProducttoUI]
+        View_Product --> UI_View
+    end
+
+    subgraph CRUD Pattern Overview
+        CRUD_CreateUpdate -->|Create/Update Operations| CRUD_DbToProduct
+    end
+
+    Tech_Stack[Tech Stack] -->|Uses| Db_Database[Database - CRUD Data Functions]
+    Tech_Stack -->|Uses| EF[Entity Framework 6.4 RAD]
+
+
+```
+
+```mermaid
+graph LR
+A[User] --> B(Frontend)
+B --> C{UI}
+C --> D{User actions}
+D --> E(Create Task)
+E --> F[Web API]
+F --> G{Controller}
+G --> H(Get Data)
+H --> F
+G --> I(Post Data)
+I --> F
+G --> J(Put Data)
+J --> F
+G --> K(Delete Data)
+K --> F
+F --> L{Business logic}
+L --> M{Data access layer}
+M --> N[Entity Framework]
+N --> O{Database}
+O --> P(Backend)
+P --> Q[SignalR.Hubs.EntityFramework]
+Q --> R[Real-time updates to UI]
+R --> B
+
+```
+
 #### Flow : Ui <-> Db 
 
 View = User Interface
