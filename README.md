@@ -1,39 +1,95 @@
 # Enterprise
 
-The Enterprise project leverages the CRUD design pattern to transform traditional C# WinForms development. By prioritizing testability and reusability, this approach addresses the common pitfalls of frontend-loaded coding practices. The goal is to facilitate a programming paradigm that supports robust testing and scalable application growth.
-
-Our focus is on modernizing enterprise Line of Business (LOB) applications by employing sound architectural patterns that enable a clear separation between user interfaces and business logic.
+These Enterprise project examples leverage a Layered Seperation Design Pattern for **programming** (i.e Coding againsta a pattern) rather than Front End **Coded** Spaghetti.
 
 **Key Benefits:**
-
-- **Separation of Concerns**: Introducing a 'CRUD' database layer to uncouple UI elements from core business processes.
+- **Tuple Intellisense** Design Time intellisense Tuple matching for datafields to Ui properties
 - **Intuitive UI Logic**: The use of tuples for property assignments simplifies the synchronization between UI components and database fields.
+- **Separation of Concerns**: Introducing a 'CRUD' database layer to uncouple UI elements from core business processes.
 - **Centralized Business Logic**: Migrating logic to the CRUD layer fosters a more maintainable and organized code structure.
 - **Enhanced Testing**: Incorporating unit testing to ensure application stability and integrity.
 - **Cloud Compatibility**: Architectural soundness eases the transition to Azure, facilitating mobile application development and codebase sharing.
+
+### Seperation Layers [EFDb <-> Poco <-> Tuples <-> Ui ]
+
+#### Flow : Ui <-> Db 
+
+View = User Interface
+
+```
+UI View 
+    <- View_xxx.cs ->
+            View via Tuples to POCO
+                <- CRUD_xxx.cs ->
+                        POCO to EF Db Table
+-------------
+View to Db Flow
+-------------
+    UI View
+        Product item = View.Product(int Quantity, string Product);
+            [View via Tuples to POCO]
+                CRUD.Product_CreateUpdate (Product item); // Update if Id Assigned
+                    [POCO to Db]
+                        Db Table
+```
+
+#### Flow ->  Db to Ui
+```
+EF Db Table
+    <- CRUD_xxxx.cs -> 
+            EF Table to POCO
+                 <- View_xxxx.cs ->
+                    POCO to Tuples to View
+
+-------------
+Db to View Flow
+-------------
+     Product Db Table
+        CRUD_Product.cs : CRUD.DbtoProduct(long ProductId)
+        <-- [EFDb to POCO] << Db via EF : CRUD Layer >> -->
+            VIew_Product.cs : (int Quantity, string Product) View.ProducttoUI (Product item)
+            <-- [POCOO-> View via Tuples] << UI via Tuples : View Layer>> -->
+                UI View Updated
+```
+
+
+
+    
+Create/Update 
+
+## Tech Stack  
+
+
+
+
+
+### Db Database - CRUD Data Functions
+Entityframework 6.4
+RAD -> EF Visual Editor 
+
 
 ## CRUD Pattern Overview
 
 At the heart of the project is the CRUD LOB pattern, crafted to bolster the maintainability and scalability of enterprise software. 
 
-This strategy is not just about code refinement and boilerplate; it's an approach aimed at using old Winform RAD with Entityframework ORM for  Line of Business applications into the future with solid foundations and clear, scalable structure.
-Avoiding Databinding, dependancy injection and allowing for step through debugging.
+This strategy is approach aimed at using Winform RAD with Entityframework ORM RAD for  Line of Business applications into the future with solid foundations and clear, scalable structure.
 
-![CRUD LOB Pattern](https://github.com/Opzet/Enterprise/blob/main/CRUD%20Pattern/CRUD%20LOB%20Pattern.png?raw=true)
+Avoiding boilerplate MvvM, Databinding, dependancy injection and allowing for step through debugging.
+
+![Pattern](https://github.com/Opzet/Enterprise/blob/main/CRUD%20Pattern/CRUD%20LOB%20Pattern.png?raw=true)
 
 ## Technology Stack
-
-### Winform DotNet 4.8
-
-A complete Frontend and Backend solution that traditionally leads to tightly coupled and frontend-loaded code. 
+Note: Graphical Rapid Application Development (RAD) used where possible
+A pattern for a Frontend and Backend solution to avoid frontend loaded code when using RAD tools. 
 
 
+### Front End : Winform DotNet 4.8
 
-### Entity Framework EF Visual Designer
+RAD Tool -> Winform Dot Net 4.8 
 
-A Visual Studio 2022 extension that provides a user-friendly interface for adding Entity Framework (EF6 or EFCore) models to your project. It ensures a robust implementation of Entity Framework as per Microsoft's official guidelines.
+### Back End : Entity Framework 
 
-You can dive deeper into the designer's features on the [Documentation site](https://msawczyn.github.io/EFDesigner/).
+RAD Tool -> EF Visual Designer for db schema [Documentation site](https://msawczyn.github.io/EFDesigner/).
 
 ![EF Visual Designer](https://msawczyn.github.io/EFDesigner/images/Designer.jpg)
 
@@ -43,15 +99,16 @@ You can dive deeper into the designer's features on the [Documentation site](htt
 
 The DbContext code is tailored for consumption via WebAPI, providing a flexible and scalable approach to data access.
 
-### Enterprise Message Hub 
+
 
 #### Realtime Multiuser App Messaging
+SignalR Enterprise Message Hub, Publish / Subscribe with INotify 
 
 The DbContext CRUD operations generate publish/subscribe message bus events via SignalR, enabling real-time communication across the application.
 
 ---
 
-# Background Notes:
+# Background Development Notes:
 
 ## Is MVVM Maintainable / Readable?
 
