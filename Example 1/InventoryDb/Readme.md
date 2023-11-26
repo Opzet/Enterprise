@@ -43,26 +43,20 @@ This will allow us to switch between the testing and production databases.
 The testing database will be created and destroyed for each test run.  The production database will be used for the application.
 
 
+Add to app.config, one for testing and one for deployment
+
+  <connectionStrings>
+    <add name="ConnectionName"
+         connectionString="Data Source=(localdb)\mssqllocaldb;Initial Catalog=Inventory_TestingDb;Integrated Security=True;"
+         providerName="System.Data.SqlClient" />
+  </connectionStrings>
+
+
+
+
 ```c#
 namespace InventoryDb
 {
-    public static class ConnectionString
-    {
-        public static bool IsTesting { get; set; } = false;
-
-        public static string Get()
-        {
-            if (IsTesting)
-            {
-                return @"Data Source=(localdb)\mssqllocaldb;Initial Catalog=Inventory_TestingDb;Integrated Security=True;";
-            }
-            else
-            {
-                return @"Data Source=(localdb)\mssqllocaldb;Initial Catalog=InventoryDb;Integrated Security=True;";
-            }
-        }
-    }
-
 
     public static class Crud_Products
     {
@@ -70,7 +64,7 @@ namespace InventoryDb
         // Db Create/ Update
         public static void CreateUpdate(Product product)
         {
-            using (var db = new Db(ConnectionString.Get()))
+            using (var db = new Db())
             {
                 if (product.Id == -1) // Assuming -1 is an unsaved product
                 {

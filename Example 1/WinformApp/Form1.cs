@@ -57,7 +57,7 @@ namespace WinformApp
 
         private void Form1_Load(object sender, EventArgs e)
         {
-           
+            Crud_Products.Initialize();
         }
     }
 }

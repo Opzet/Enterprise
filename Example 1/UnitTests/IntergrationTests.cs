@@ -35,9 +35,10 @@ namespace IntergrationTests
 
             SetupLocalDb("mssqllocaldb", "Inventory_TestingDb");
 
-
-            // Set to use the testing database
-            ConnectionString.IsTesting = true;
+            // System.InvalidOperationException: 'No Entity Framework provider found for the ADO.NET provider with invariant name 'System.Data.SqlClient
+            var type = typeof(System.Data.Entity.SqlServer.SqlProviderServices);
+            if (type == null)
+                throw new Exception("Do not remove, ensures static reference to System.Data.Entity.SqlServer");
 
             using (var db = new Db())
             {
@@ -73,6 +74,7 @@ namespace IntergrationTests
 
             }
         }
+
         static bool CreateLocalDBInstance(string InstanceName)
         {
             // Lists all instances
@@ -101,7 +103,7 @@ namespace IntergrationTests
 
 
         [TestMethod]
-        public void CreateUpdate_Should_AddOrUpdateProduct()
+        public void CreateProduct_Should_AddProductToDatabase()
         {
             // Arrange
             var newProduct = new Product { /* set properties with test data */ };
@@ -110,9 +112,12 @@ namespace IntergrationTests
             Crud_Products.CreateUpdate(newProduct);
 
             // Assert
-            var product = Crud_Products.GetProduct(newProduct.Id);
-            Assert.IsNotNull(product);
-            // Other assertions to verify the product was created or updated correctly
+            using (var db = new Db())
+            {
+                var addedProduct = db.Products.FirstOrDefault(p => p.Id == newProduct.Id);
+                Assert.IsNotNull(addedProduct, "Product should not be null.");
+                // Further assertions to verify the properties of the added product
+            }
         }
 
         //[TestMethod]

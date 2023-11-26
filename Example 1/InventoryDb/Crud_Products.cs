@@ -6,43 +6,25 @@ using System.Runtime.Remoting.Contexts; // Make sure you have this for EntitySta
 
 namespace InventoryDb
 {
-    public static class ConnectionString
-    {
-        public static bool IsTesting { get; set; } = false;
 
-        public static string Get()
+    public static class Crud_Products
+    {
+
+        public static void Initialize()
         {
+            // Initaliase the DB, create Db if it does not exist
+            // See http://go.microsoft.com/fwlink/?LinkId=260882 
+
+            // System.InvalidOperationException: 'No Entity Framework provider found for the ADO.NET provider with invariant name 'System.Data.SqlClient
             var type = typeof(System.Data.Entity.SqlServer.SqlProviderServices);
             if (type == null)
                 throw new Exception("Do not remove, ensures static reference to System.Data.Entity.SqlServer");
 
-            if (IsTesting)
-            {
-                return @"Data Source=(localdb)\mssqllocaldb;Initial Catalog=Inventory_TestingDb;Integrated Security=True;";
-            }
-            else
-            {
-                return @"Data Source=(localdb)\mssqllocaldb;Initial Catalog=InventoryDb;Integrated Security=True;";
-            }
-        }
-    }
-
-    public static class Crud_Products
-    {
-       
-        public static void Initialize()
-        {
-            // Initaliase the DB, create Db if it does not exist
-            //See http://go.microsoft.com/fwlink/?LinkId=260882 
-            using (var db = new Db(ConnectionString.Get()))
+            using (var db = new Db())
             {
                 string Connection = db.Database.Connection.ConnectionString;
 
                 db.Database.Initialize(true);
-               
-                // WIP - > Change Connection String
-                db.Database.Connection.ConnectionString = ConnectionString.Get();
-
             }
 
             // Additional setup can be done here, like applying migrations to the test database
@@ -51,7 +33,7 @@ namespace InventoryDb
         // Db Create/ Update
         public static void CreateUpdate(Product product)
         {
-            using (var db = new Db(ConnectionString.Get()))
+            using (var db = new Db())
             {
                 if (product.Id == -1) // Assuming -1 is an unsaved product
                 {
@@ -72,7 +54,7 @@ namespace InventoryDb
             if (id == -1)
                 return new Product();
 
-            using (var db = new Db(ConnectionString.Get()))
+            using (var db = new Db())
             {
                 return db.Products.Find(id);
             }
@@ -81,7 +63,7 @@ namespace InventoryDb
         // Db Read all
         public static IEnumerable<Product> ListProducts()
         {
-            using (var db = new Db(ConnectionString.Get()))  // To Do: Why is this not working? System.InvalidOperationException: 'No connection string named 'ConnectionName' could be found in the application config file.'
+            using (var db = new Db())  // To Do: Why is this not working? System.InvalidOperationException: 'No connection string named 'ConnectionName' could be found in the application config file.'
             {
                 return db.Products.ToList();
             }
@@ -90,7 +72,7 @@ namespace InventoryDb
         // Db Delete
         public static void DeleteProduct(long id)
         {
-            using (var db = new Db(ConnectionString.Get()))
+            using (var db = new Db())
             {
                 var product = db.Products.Find(id);
                 if (product != null)
