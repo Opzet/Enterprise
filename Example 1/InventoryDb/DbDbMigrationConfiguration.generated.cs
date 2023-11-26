@@ -26,7 +26,7 @@ namespace Migrations
       public DbDbMigrationConfiguration()
       {
          AutomaticMigrationsEnabled = true;
-         AutomaticMigrationDataLossAllowed = false;
+         AutomaticMigrationDataLossAllowed = true;
          Init();
       }
    }

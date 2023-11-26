@@ -33,7 +33,18 @@ namespace InventoryDb
 
       partial void CustomInit();
 
-      #warning Default constructor not generated for Db since no default connection string was specified in the model
+      /// <summary>
+      /// Default connection string
+      /// </summary>
+      public static string ConnectionString { get; set; } = @"Name=ConnectionName";
+      /// <inheritdoc />
+      public Db() : base(ConnectionString)
+      {
+         Configuration.LazyLoadingEnabled = true;
+         Configuration.ProxyCreationEnabled = true;
+         System.Data.Entity.Database.SetInitializer<Db>(new DbDatabaseInitializer());
+         CustomInit();
+      }
 
       /// <inheritdoc />
       public Db(string connectionString) : base(connectionString)

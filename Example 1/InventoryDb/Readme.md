@@ -4,6 +4,34 @@ Install-Package EntityFramework
 
 Install-Package EntityFramework.SqlServer
 
+    C:\>sqllocaldb create DbInstance
+
+    //Connection string is now 
+    //Data Source=(localdb)\DbInstance;Initial Catalog=EFLocalDb;Integrated Security=True
+
+    C:\>sqllocaldb info DbInstance
+    Name:               DbInstance
+    Version:            13.1.4001.0
+    Shared name:
+    Owner:              DEV\David
+    Auto-create:        No
+    State:              Stopped
+    Last start time:    2/11/2021 1:02:19 PM
+    Instance pipe name:  <- Pipe name entry missing, SqlLocalDB not started?  Should auto start
+
+    C:\>SqlLocalDB start v11
+    LocalDB instance "v11" started.
+
+    C:\>sqllocaldb info DbInstance
+    Name:               DbInstance
+    Version:            13.1.4001.0
+    Shared name:
+    Owner:              DEV\David
+    Auto-create:        No
+    State:              Running
+    Last start time:    2/11/2021 1:04:51 PM
+    Instance pipe name: np:\\.\pipe\LOCALDB#385051FC\tsql\query
+
 
 
 Add a new class to the project called `Crud_xxx.cs`

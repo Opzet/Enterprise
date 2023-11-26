@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<modelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="4.2.5.1" Id="cba47279-0950-4257-bb2c-e4d5e72a52a4" entityContainerName="Db" namespace="InventoryDb" automaticMigrationsEnabled="true" entityFrameworkVersion="EF6" showCascadeDeletes="false" databaseType="None" warnOnMissingDocumentation="false" exposeForeignKeys="false" generateDbContextFactory="false" showInterfaceIndicators="false" xmlns="http://schemas.microsoft.com/dsltools/EFModel">
+<modelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="4.2.5.1" Id="cba47279-0950-4257-bb2c-e4d5e72a52a4" entityContainerName="Db" namespace="InventoryDb" automaticMigrationsEnabled="true" entityFrameworkVersion="EF6" connectionStringName="ConnectionName" showCascadeDeletes="false" databaseType="None" warnOnMissingDocumentation="false" exposeForeignKeys="false" generateDbContextFactory="false" showInterfaceIndicators="false" xmlns="http://schemas.microsoft.com/dsltools/EFModel">
   <comments>
     <comment Id="1edfd9ef-f270-4206-906f-e7fb4ebe0acf" text="Creating a Connection String and Working with SQL Server LocalDB&#xD;&#xA;&#xD;&#xA;https://learn.microsoft.com/en-us/aspnet/mvc/overview/getting-started/introduction/creating-a-connection-string&#xD;&#xA;" />
   </comments>

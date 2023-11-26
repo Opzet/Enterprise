@@ -27,8 +27,6 @@ namespace InventoryDb
         }
     }
 
-    
-
     public static class Crud_Products
     {
        
@@ -38,9 +36,15 @@ namespace InventoryDb
             //See http://go.microsoft.com/fwlink/?LinkId=260882 
             using (var db = new Db(ConnectionString.Get()))
             {
-               db.Database.Initialize(true);
+                string Connection = db.Database.Connection.ConnectionString;
+
+                db.Database.Initialize(true);
+               
+                // WIP - > Change Connection String
+                db.Database.Connection.ConnectionString = ConnectionString.Get();
+
             }
-           
+
             // Additional setup can be done here, like applying migrations to the test database
         }
 
@@ -77,7 +81,7 @@ namespace InventoryDb
         // Db Read all
         public static IEnumerable<Product> ListProducts()
         {
-            using (var db = new Db(ConnectionString.Get()))
+            using (var db = new Db(ConnectionString.Get()))  // To Do: Why is this not working? System.InvalidOperationException: 'No connection string named 'ConnectionName' could be found in the application config file.'
             {
                 return db.Products.ToList();
             }
