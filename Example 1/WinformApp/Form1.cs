@@ -40,12 +40,7 @@ namespace WinformApp
             listView1.Columns.Add("Quantity", -2, HorizontalAlignment.Left);
         }
 
-        private void LoadProductsIntoListView()
-        {
-
-            View_Products.LoadProductsIntoListView(listView1);
-        }
-
+      
         private void btnSave_Click(object sender, EventArgs e)
         {
             long id = -1;
@@ -53,6 +48,11 @@ namespace WinformApp
                 id = (long)listView1.SelectedItems[0].Tag;
 
             View_Products.CreateUpdate(id, txtName.Text, numQty.Value);
+        }
+
+        private void btnRead_Click(object sender, EventArgs e)
+        {
+            View_Products.LoadProductsIntoListView(listView1);
         }
     }
 }

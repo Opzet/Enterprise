@@ -80,6 +80,7 @@
       <DependentUpon>Db.efmodel</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Readme.md" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Db.tt">

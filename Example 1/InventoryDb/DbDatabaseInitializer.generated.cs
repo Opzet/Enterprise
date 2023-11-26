@@ -18,7 +18,7 @@ using System.Data.Entity;
 namespace InventoryDb
 {
    /// <inheritdoc/>
-   public partial class DbDatabaseInitializer : CreateDatabaseIfNotExists<InventoryDb.Db>
+   public partial class DbDatabaseInitializer : MigrateDatabaseToLatestVersion<InventoryDb.Db, Migrations.DbDbMigrationConfiguration>
    {
    }
 }

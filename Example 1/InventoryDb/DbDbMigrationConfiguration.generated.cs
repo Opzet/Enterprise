@@ -25,7 +25,7 @@ namespace Migrations
       /// <inheritdoc/>
       public DbDbMigrationConfiguration()
       {
-         AutomaticMigrationsEnabled = false;
+         AutomaticMigrationsEnabled = true;
          AutomaticMigrationDataLossAllowed = false;
          Init();
       }
